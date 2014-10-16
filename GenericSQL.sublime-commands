@@ -1,0 +1,5 @@
+[
+    {"caption": "SQL: exec file", "command": "sql_exec", "args" : {"sqlscope" : "file"} },
+    {"caption": "SQL: exec stmt", "command": "sql_exec", "args" : {"sqlscope" : "statement"} },
+    {"caption": "SQL: explain", "command": "sql_exec", "args" : {"sqlscope" : "statement", "action" : "explain"} }
+]

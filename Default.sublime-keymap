@@ -1,0 +1,22 @@
+[
+    {
+        "keys": ["f8"],
+        "command": "sql_exec",
+        "args" : {"sqlscope" : "statement"}
+    },
+    {
+        "keys": ["shift+f8"],
+        "command": "sql_exec",
+        "args" : {"sqlscope" : "statement", "action" : "reset"}
+    },
+    {
+        "keys": ["ctrl+shift+f8"],
+        "command": "sql_exec",
+        "args" : {"sqlscope" : "statement", "action" : "explain"}
+    },
+    {
+        "keys": ["shift+f7"],
+        "command": "sql_exec",
+        "args" : {"sqlscope" : "file", "action" : "reset"}
+    }
+]
