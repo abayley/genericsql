@@ -100,7 +100,7 @@ class SqlExecCommand(exec_in_window.ExecInWindowCommand):
 
     def run_file(self, view, cmd, file_name, **kwargs):
         # Remove dialect kwarg. If you don't then command execution will fail.
-        dialect = kwargs.pop("dialect")
+        kwargs.pop("dialect")
         # Suffix filename to last argument. Must be suffixed to last arg, as opposed to
         # appended to arg list, as mysql requires it.
         cmd[-1] = cmd[-1] + file_name
@@ -170,12 +170,12 @@ class SqlExecCommand(exec_in_window.ExecInWindowCommand):
         #     self.log(str(k) + " : " + str(v))
         # self.log("----------")
 
-        view = self.window.active_view() 
+        view = self.window.active_view()
         action = kwargs.pop("action", "")
         if action == "reset":
             view.settings().erase("cmd")
 
-        # If scope was passed in then use save it on view.
+        # If scope was passed in then save it on view.
         # If scope is saved on view then use it (only if not passed in).
         # Must pop scope off kwargs before attempting to run anything.
         # If you don't then things won't run.
@@ -185,6 +185,9 @@ class SqlExecCommand(exec_in_window.ExecInWindowCommand):
         else:
             view.settings().set("sqlscope", sqlscope)
 
+        # Check if cmd is already set on view.
+        # If not, then open the overlay window to prompt the user for the build command to run.
+        # The overlay will call this method with new params.
         dialect = kwargs.get("dialect", "")
         cmd = kwargs.pop("cmd", "")
         if not cmd:
