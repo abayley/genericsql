@@ -1,12 +1,12 @@
 GenericSQL
 ==========
-This is a Sublime Text 2 plugin that runs SQL commands as an external shell process,
+This is a Sublime Text 3 plugin that runs SQL commands as an external shell process,
 and shows the output in a new view. Also has basic explain-plan support.
 
 
 License
 =======
-GPLv3, except for the exec_in_window code, which I stole from https://github.com/vhyza/exec-in-window
+GPLv3
 
 
 Install
@@ -16,11 +16,11 @@ No Package Control magic here; just make directory `$HOME/.config/sublime-text-2
 
 Usage
 =====
-You need to make a new build system, and then edit you build file so it looks like this:
+You need to make a new build system, and then edit your build file so it looks like this:
 
     {
         // selector only works when build system is Automatic
-        // "selector": "source.sql",
+        "selector": "source.sql",
         "target": "sql_exec",
         "cmd" : "",
         "variants": [
@@ -44,4 +44,13 @@ below the current cursor position to the next blank line, copy it into a temp fi
 and send it to whatever database connection has been saved against the view.
 Shift-F8 is the same but forces a reselection of the database connection, like Shift-F7 does.
 
-Ctrl-Shift-F8 does an explain-plan of the snippet.
+
+Summary:
+f7/ctrl+b     : execute - runs selection if text is selected, entire script otherwise.
+f8            : execute statement - selects current block of text around cursor and executes it.
+shift+f7      : execute, but force re-selection of db connection
+shift+f8      : execute statement, with forced re-selection of db connection
+ctrl+f7       : kill current script
+ctrl+f8       : kill current script
+ctrl+shift+f8 : explain plan
+
